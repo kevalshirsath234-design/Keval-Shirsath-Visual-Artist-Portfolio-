@@ -11,13 +11,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
-        /* Bootstrap aur Tailwind ke beech conflict rokne ke liye text decoration fix */
         a { text-decoration: none !important; }
-
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #1f2937; overflow-x: hidden; }
         .hidden { display: none !important; }
         
-        /* Background Animation */
+        /* --- Background Animation (Desktop) --- */
         @keyframes moveBackground {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -25,11 +23,29 @@
         }
         
         .animated-bg {
-            /* Apni background image yahan lagayein */
-            background-image: url('Background Image.jpg');
-            background-size: 200%;
-            background-position: center;
-            animation: moveBackground 20s ease-in-out infinite alternate;
+            /* STEP 1: Yahan naya naam use kiya hai (bina space wala) */
+            background-image: url('background-image.jpg');
+            
+            /* PC ke liye settings */
+            background-size: 150%; /* Thoda kam zoom kiya taaki clear dikhe */
+            background-position: center center;
+            animation: moveBackground 25s ease-in-out infinite alternate;
+        }
+
+        /* --- MOBILE FIX --- */
+        /* Jab screen chhoti ho (Phone/Tablet) */
+        @media (max-width: 768px) {
+            .animated-bg {
+                /* Image ko screen par perfectly fit karega */
+                background-size: cover; 
+                background-position: center;
+                /* Mobile par animation band kar di taaki load jaldi ho aur issue na aaye */
+                animation: none; 
+            }
+            /* Mobile browser ke address bar issue ko fix karne ke liye */
+            header#home {
+                 height: 100dvh !important; /* Dynamic Viewport Height */
+            }
         }
 
         /* Glassy Button */
@@ -101,7 +117,7 @@
         </div>
     </nav>
 
-    <header id="home" class="relative min-h-screen flex items-center justify-center text-white bg-black overflow-hidden animated-bg pt-16">
+    <header id="home" class="relative h-screen flex items-center justify-center text-white bg-black overflow-hidden animated-bg pt-16">
         <div class="absolute inset-0 bg-black/50"></div>
         <div class="z-10 text-center px-4 w-full max-w-4xl animate-fade-in-up">
             <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 tracking-tight drop-shadow-lg leading-tight">
@@ -250,9 +266,9 @@
                 title: "Photography Portfolio",
                 desc: "My best captured moments.",
                 items: [
-                    { type: 'image', src: 'media/Photo3.jpg' }, 
-                    { type: 'image', src: 'media/Photo4.jpg' },
-                    { type: 'image', src: 'media/Photo5.jpg' }
+                    { type: 'image', src: 'media/photo3.jpg' }, 
+                    { type: 'image', src: 'media/photo4.jpg' },
+                    { type: 'image', src: 'media/photo5.jpg' }
                 ]
             },
             'cinematography': {
@@ -260,7 +276,7 @@
                 desc: "Cinematic shots and films.",
                 items: [
                     // --- TYPE 1: Local Video ---
-
+                    { type: 'video', src: 'media/wedding_teaser.mp4' },
                     
                     // --- TYPE 2: YouTube Button Link ---
                     { 
