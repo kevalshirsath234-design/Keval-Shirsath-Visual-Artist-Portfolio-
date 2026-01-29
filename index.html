@@ -15,36 +15,27 @@
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; color: #1f2937; overflow-x: hidden; }
         .hidden { display: none !important; }
         
-        /* --- Background Animation (Desktop) --- */
-        @keyframes moveBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .animated-bg {
-            /* STEP 1: Yahan naya naam use kiya hai (bina space wala) */
-            background-image: url('background-image.jpg');
+        /* --- NEW HERO BACKGROUND EFFECT --- */
+        .hero-bg {
+            /* Aapki wahi image */
+            background-image: url('artist.jpg'); 
             
-            /* PC ke liye settings */
-            background-size: 150%; /* Thoda kam zoom kiya taaki clear dikhe */
+            /* Image ko screen par fit karna */
+            background-size: cover; 
             background-position: center center;
-            animation: moveBackground 25s ease-in-out infinite alternate;
+            
+            /* "Bhavesh Effect" - Image scroll nahi hogi, fix rahegi */
+            background-attachment: fixed; 
         }
 
-        /* --- MOBILE FIX --- */
-        /* Jab screen chhoti ho (Phone/Tablet) */
+        /* Mobile par fixed background kabhi-kabhi lag karta hai, isliye mobile ke liye normal scroll */
         @media (max-width: 768px) {
-            .animated-bg {
-                /* Image ko screen par perfectly fit karega */
-                background-size: cover; 
-                background-position: center;
-                /* Mobile par animation band kar di taaki load jaldi ho aur issue na aaye */
-                animation: none; 
+            .hero-bg {
+                background-attachment: scroll;
             }
-            /* Mobile browser ke address bar issue ko fix karne ke liye */
+             /* Mobile browser height fix */
             header#home {
-                 height: 100dvh !important; /* Dynamic Viewport Height */
+                 height: 100dvh !important; 
             }
         }
 
@@ -117,8 +108,9 @@
         </div>
     </nav>
 
-    <header id="home" class="relative h-screen flex items-center justify-center text-white bg-black overflow-hidden animated-bg pt-16">
-        <div class="absolute inset-0 bg-black/50"></div>
+    <header id="home" class="relative h-screen flex items-center justify-center text-white bg-black overflow-hidden hero-bg pt-16">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
+        
         <div class="z-10 text-center px-4 w-full max-w-4xl animate-fade-in-up">
             <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-4 tracking-tight drop-shadow-lg leading-tight">
                 Visual <span class="text-indigo-400">Artist</span>
@@ -239,7 +231,6 @@
             { name: "Ayan Khan", handle: "@_btwitsayan024", img: "Ayan.png", link: "https://www.instagram.com/_btwitsayan024?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
             { name: "Chirag Patel", handle: "@chiragpatel.music", img: "Chirag.png", link: "https://www.instagram.com/chiragpatel.music/?utm_source=ig_web_button_share_sheet" },
             { name: "Dhruv Borsaliwala", handle: "@djdhruv__", img: "Dhvru.png", link: "https://www.instagram.com/djdhruv__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
-            { name: "Sneha Roy", handle: "@sneha_design", img: "https://randomuser.me/api/portraits/women/65.jpg", link: "https://instagram.com" },
             { name: "Jignesh Palit", handle: "@anchor_jignesh", img: "Jignesh.png", link: "https://www.instagram.com/anchor_jignesh?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
             { name: "Yash Salvi", handle: "@yash_salvi_09", img: "yash.png", link: "https://www.instagram.com/yash_salvi_09?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
             { name: "SDJICP", handle: "@sdjicp_official", img: "sdj.jpg", link: "https://www.instagram.com/sdjicp_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
